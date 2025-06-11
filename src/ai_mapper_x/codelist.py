@@ -1,6 +1,7 @@
 from mxl_indexer import MXLIndexer
 from logger import logger
 
+
 CODELIST_RULE_TEMPLATE="""
 if $4000_N1[i].#0098:6="SF" THEN
 BEGIN
