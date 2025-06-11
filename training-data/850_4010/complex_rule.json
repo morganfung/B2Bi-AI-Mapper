@@ -1,0 +1,163 @@
+[
+    {
+        "name": "REF",
+        "type": "Segment",
+        "iterator": "u",
+        "input_rule": {
+            "explicit_rule": "if $REF[u].#0128=\"CO\" then\n$850.#TEMP_REF_CO=$REF[u].#0127;\nif $REF[u].#0128=\"ST\" then\n$850.#TEMP_REF_ST=$REF[u].#0127;\nif $REF[u].#0128=\"MR\" then\n$850.#TEMP_REF_MR=$REF[u].#0127;\nif $REF[u].#0128=\"DP\" then\n$850.#TEMP_REF_DP=$REF[u].#0127;\nif $REF[u].#0128=\"IA\" then\n$850.#TEMP_REF_IA=$REF[u].#0127;\nif $REF[u].#0128=\"VR\" then\n$850.#TEMP_REF_VR=$REF[u].#0127;"
+        }
+    },
+    {
+        "name": "PER",
+        "type": "Segment",
+        "input_rule": {
+            "explicit_rule": "if exist(#0093)|exist(#0364) then\n$850.#TEMP_PER_CONTACT=#0093+\";\"+#0364;"
+        }
+    },
+    {
+        "name": "FOB",
+        "type": "Segment",
+        "iterator": "j",
+        "input_rule": {
+            "explicit_rule": "if $FOB[j].#0146=\"CC\" | $FOB[j].#0146=\"PB\" | $FOB[j].#0146=\"OR\" Then\n$850.#TEMP_FOB_FT=\"Collect\";\n\nif $FOB[j].#0146=\"PP\" | $FOB[j].#0146=\"BP\" | $FOB[j].#0146=\"DE\" then\n$850.#TEMP_FOB_FT=\"Prepaid\";"
+        }
+    },
+    {
+        "name": "1000_SAC",
+        "type": "Group",
+        "iterator": "sac1000i",
+        "input_rule": {
+            "explicit_rule": "if $1000_SAC[sac1000i].#0248 = \"A\" then\n$850.#TEMP_HSAC_ALLOWANCE = \"Allowance\" + $1000_SAC[sac1000i].#1300  +$1000_SAC[sac1000i].#0378  +$1000_SAC[sac1000i].#0331+$1000_SAC[sac1000i].#0352:5;"
+        }
+    },
+    {
+        "name": "ITD",
+        "type": "Segment",
+        "iterator": "k",
+        "input_rule": {
+            "explicit_rule": "string[50]  TND,TND1,TND2;\nTND=\"\"; TND1=\"\"; TND2=\"\";\n\nIF exist($ITD[k].#0386 ) THEN\nBEGIN\nntoa($ITD[k].#0386,TND);\nEND\n\nntoa($ITD[k].#0338,TND1);\nTND1=left(TND1,1);\nntoa($ITD[k].#0351,TND2);\n\nIF TND1=\"0\" & TND2 = \"0\" then\n$850.#TEMP_ITD_TERMS = \"NET\"+TND;\nELSE\n$850.#TEMP_ITD_TERMS=TND1+\"%\"+TND2+\"NET\"+TND;"
+        }
+    },
+    {
+        "name": "DTM",
+        "type": "Segment",
+        "iterator": "m",
+        "code_list_field_name": "DTM01"
+    },
+    {
+        "name": "TD5",
+        "type": "Segment",
+        "iterator": "l",
+        "input_rule": {
+            "explicit_rule": "if $TD5[l].#0387!=\"\"then\n$850.#TEMP_TD5_TMC=$TD5[l].#0387;"
+        }
+    },
+    {
+        "name": "3000_N9",
+        "type": "Group",
+        "iterator": "x",
+        "input_rule": {
+            "explicit_rule": "if $3000_N9[x].#TEMP_MSG_TXT!=\"\" then\nBegin \n$850.#TEMP_N9_MSG= $850.#TEMP_N9_MSG + $3000_N9[x].#TEMP_MSG_TXT;\nEnd"
+        }
+    },
+    {
+        "name": "MSG",
+        "type": "Segment",
+        "iterator": "z",
+        "input_rule": {
+            "explicit_rule": "if $MSG[x][z].#0933!=\"\" then \nBegin \n$3000_N9[x].#TEMP_MSG_TXT=$3000_N9[x].#TEMP_MSG_TXT + $MSG[x][z].#0933;\nEnd"
+        }
+    },
+    {
+        "name": "4000_N1",
+        "name_in_spec": "N1",
+        "type": "Group",
+        "code_list_field_name": "N101",
+        "superset_codes": [
+            "ST",
+            "BY",
+            "VN",
+            "BS",
+            "OB",
+            "BT"
+        ],
+        "iterator": "i"
+    },
+    {
+        "name": "PER:2",
+        "type": "Segment",
+        "iterator": "p1",
+        "input_rule": {
+            "explicit_rule": "integer len0,d;\nstring[30] c;\nif $PER:2[i][p1].#0366:2=\"BD\" then\nBEGIN\nc=$PER:2[i][p1].#0093:5;\nlen0=len($PER:2[i][p1].#0093:5);\nd=strstr(c,\" \");\nperLastName=left(c,d);\nperFirstName=mid(c,d+1,len0);\nEND"
+        },
+        "presession": {
+            "declaration": "string[30] perFirstName, perLastName;",
+            "initialization": "perFirstName=\"\"; \nperLastName=\"\";"
+        }
+    },
+    {
+        "name": "8000_PO1",
+        "name_in_spec": "PO1",
+        "type": "Group",
+        "iterator": "n",
+        "niagara_bucket": [
+            {
+                "field_name": "TEMP_PO1_ITEM",
+                "qualifier_superset": [
+                    "SK",
+                    "PI",
+                    "IN",
+                    "CB",
+                    "IT"
+                ]
+            },
+            {
+                "field_name": "TEMP_PO1_NIAGARAITEM",
+                "qualifier_superset": [
+                    "VN",
+                    "VP",
+                    "MG",
+                    "VB"
+                ]
+            },
+            {
+                "field_name": "TEMP_PO1_UPC",
+                "qualifier_superset": [
+                    "UP",
+                    "UA",
+                    "UK",
+                    "EN",
+                    "IZ",
+                    "UI"
+                ]
+            }
+        ],
+        "static_input_rule":{
+            "explicit_rule":"$8000_PO1[n].#TEMP_PO1_QTY = $8000_PO1[n].#0330;\n$8000_PO1[n].#TEMP_PO1_UOM = $8000_PO1[n].#0355:28;\n$8000_PO1[n].#TEMP_PO1_LINENUM = $8000_PO1[n].#0350:3;\n$8000_PO1[n].#TEMP_PO1_PRICE = $8000_PO1[n].#0212:2;\nIf  $8000_PO1[n].#0355:28 = \"\" Then\n\t$8000_PO1[n].#TEMP_PO1_UOM1 = \"IT2\";"
+        }
+    },
+    {
+        "name": "PO4",
+        "type": "Segment",
+        "input_rule": {
+            "explicit_rule": "if exist($PO4.#0356) then\n$8000_PO1.#TEMP_PO4_PACK=$PO4.#0356;\nif exist($PO4.#0810) then \n$8000_PO1.#TEMP_PO4_INNERPACK=$PO4.#0810;"
+        }
+    },
+    {
+        "name": "8200_SAC",
+        "type": "Group",
+        "iterator": "sac1",
+        "input_rule": {
+            "explicit_rule": "string[50] SAC05, sac012, sac002;\nSAC05=\"\";sac012=\"\"; sac002=\"\";\n//*****SAC02*****\nif $8200_SAC[n][sac1].#1300:3=\"ZZZZ\" |$8200_SAC[n][sac1].#1300:3=\"B130\" |$8200_SAC[n][sac1].#1300:3=\"B320\" |$8200_SAC[n][sac1].#1300:3=\"C320\" |$8200_SAC[n][sac1].#1300:3=\"D170\" |$8200_SAC[n][sac1].#1300:3=\"D240\" |$8200_SAC[n][sac1].#1300:3=\"F800\" then\nif $8200_SAC[n][sac1].#1300:3=\"ZZZZ\" then\nsac002=\"Mutually Defined\";\nif $8200_SAC[n][sac1].#1300:3=\"B130\" then\nsac002=\"Cigarette Stamping\";\nif $8200_SAC[n][sac1].#1300:3=\"B320\" then\nsac002=\"Competitive Allowance\";\nif $8200_SAC[n][sac1].#1300:3=\"C320\" then\nsac002=\"Display Allowance\";\nif $8200_SAC[n][sac1].#1300:3=\"D170\" then\nsac002=\"Free Goods\";\nif $8200_SAC[n][sac1].#1300:3=\"D240\" then\nsac002=\"Freight\";\nif $8200_SAC[n][sac1].#1300:3=\"F800\" then\nsac002=\"Promotional Allowance\";\n\n//*****SAC05*****\nif exist($8200_SAC[n][sac1].#0610:4) then\nntoa($8200_SAC[n][sac1].#0610:4,SAC05);\nelse\nempty($8200_SAC[n][sac1].#0610:4);\n\n//*****SAC12*****\nif $8200_SAC[n][sac1].#0331:2=\"01\" |$8200_SAC[n][sac1].#0331:2=\"02\" |$8200_SAC[n][sac1].#0331:2=\"03\" |$8200_SAC[n][sac1].#0331:2=\"04\" |$8200_SAC[n][sac1].#0331:2=\"05\" |$8200_SAC[n][sac1].#0331:2=\"06\" then\nif $8200_SAC[n][sac1].#0331:2=\"01\" then\nsac012=\"Bill Back\";\nif $8200_SAC[n][sac1].#0331:2=\"02\" then\nsac012=\"Off Invoice\";\nif $8200_SAC[n][sac1].#0331:2=\"03\" then\nsac012=\"VendorCheck to Customer\";\nif $8200_SAC[n][sac1].#0331:2=\"04\" then\nsac012=\"CreditCustomer Account\";\nif $8200_SAC[n][sac1].#0331:2=\"05\" then\nsac012=\"ChargePaid by Vendor\";\nif $8200_SAC[n][sac1].#0331:2=\"06\" then\nsac012=\"ChargePaid by Customer\";\n\n\nif $8200_SAC[n][sac1].#0248:3=\"C\" then\nbegin\n$8000_PO1.#TEMP_SAC_CHARGE=\"Charge;\"+sac002+\";\"+SAC05+\";\"+sac012+\";\"+$8200_SAC[n][sac1].#0352:26;\nend\n\n\nif $8200_SAC[n][sac1].#0248:3=\"A\" then\nbegin\n$8000_PO1.#TEMP_SAC_ALLOWANCE=\"Allowance;\"+sac002+\";\"+SAC05+\";\"+sac012+\";\"+$8200_SAC[n][sac1].#0352:26;\nend"
+        }
+    },
+    {
+        "name": "DTM:7",
+        "type": "Segment",
+        "iterator": "dtm7i",
+        "input_rule": {
+            "explicit_rule": "IF $DTM:7[n][dtm7i].#0374:36=\"063\" THEN\n$8000_PO1[n].#TEMP_DTM7_PD=$DTM:7[n][dtm7i].#0373:44;"
+        }
+    }
+
+]

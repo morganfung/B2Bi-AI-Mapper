@@ -1,0 +1,29 @@
+[
+    {
+        "name": "presession",
+        "rule": {
+            "declaration": "STRING [256] sCustomerNameTag, sOpUnitTag, sSTCtrlNumTag, sTranslatorCodeTag, sCustomerName;\nSTRING [9] sSTCtrlNum;\n\nobject oSysDate;\nobject oSysDateFormat;\nstring[8] sSysDateString;\nstring[1024] strXPATH, strXPATH1, strXPATH2, strXPATH3, strXPATH4, strXPATH5, strXPATH6, strXPATH7;",
+            "initialization": "sCustomerNameTag=\"\";\nsOpUnitTag=\"\";\nsSTCtrlNumTag=\"\";\nsTranslatorCodeTag=\"\";\nsCustomerName=\"\";\nstrXPATH  =  \"/ProcessData/ShipTo/N102/Name\";\nstrXPATH1 =  \"/ProcessData/ShipTo/N104/Code\";\nstrXPATH2 =  \"/ProcessData/ShipTo/N201/Name2\";\nstrXPATH3 =  \"/ProcessData/ShipTo/N301/Address\";\nstrXPATH4 =  \"/ProcessData/ShipTo/N401/City\";\nstrXPATH5 =  \"/ProcessData/ShipTo/N402/State\";\nstrXPATH6 =  \"/ProcessData/ShipTo/N403/ZipCode\";\nstrXPATH7 =  \"/ProcessData/ShipTo/N404/CountryCode\";\nUPDATE CORRELATIONDATA SET VALUE = \"NBL\" WHERE NAME =\"NB_OPUNIT\";\n\nsSTCtrlNum = \"\";\n\noSysDate = new(\"java.util.Date\");\noSysDateFormat = new(\"java.text.SimpleDateFormat\",\"yyyyMMdd HHmmss\");\nsSysDateString = oSysDateFormat.format(oSysDate);\nUPDATE processdata SET xpathresult = sSysDateString WHERE xpath = \"/ProcessData/NB_TranslationDate\";"
+        }
+    },
+    {
+        "name": "0373:65",
+        "description": "GS04",
+        "explicit_rule": "STRING [8] sGSDate;\nstrdate(#0373:65,\"%Y%m%d\",sGSDate);\nUPDATE processdata SET xpathresult = sGSDate WHERE xpath = \"/ProcessData/NB_GSDate\";"
+    },
+    {
+        "name": "9830",
+        "description": "GS05",
+        "explicit_rule": "STRING [8] sGSTime;\nstrdate(#9830,\"%H%M\",sGSTime);\nUPDATE processdata SET xpathresult = sGSTime WHERE xpath = \"/ProcessData/NB_GSTime\";"
+    },
+    {
+        "name": "0093:2",
+        "description": "N102",
+        "explicit_rule": "IF #0098:6 = \"ST\" THEN\nBEGIN\n  UPDATE processdata SET xpathresult = #0093:2 WHERE xpath=strXPATH;\n  UPDATE processdata SET xpathresult= #0067:3 WHERE xpath=strXPATH1;\nEND"
+    },
+    {
+        "name": "ORIG_SYS_DOCUMENT_REF_1000",
+        "description": "ORIG_SYS_DOCUMENT_REF_1000",
+        "explicit_rule": "UPDATE CORRELATIONDATA SET VALUE = sOrigDocRef WHERE NAME =\"NB_ORIG_SYS\";\n\nSELECT TEXT1 INTO sCustomerName FROM CODELIST WHERE Name = \"NB_CustomerName\" and receivercode = sSenderID;\n\nsCustomerNameTag = \"/ProcessData/NB_CustomerName_\" + sOrigDocRef;\nsOpUnitTag = \"/ProcessData/NB_OPUNIT_\" + sOrigDocRef;\nsSTCtrlNumTag = \"/ProcessData/NB_STCtrlNum_\" + sOrigDocRef;\nsTranslatorCodeTag = \"/ProcessData/NB_TranslatorCode_\" + sOrigDocRef;\n\nUPDATE CORRELATIONDATA SET VALUE = sOrigDocRef WHERE NAME =\"NB_ORIG_SYS\";\nUPDATE processdata SET xpathresult = sCustomerName WHERE xpath = sCustomerNameTag;\nUPDATE processdata SET xpathresult = \"NBL\" WHERE xpath = sOpUnitTag;\nUPDATE processdata SET xpathresult = sSTCtrlNum WHERE xpath = sSTCtrlNumTag;\nUPDATE processdata SET xpathresult = sSenderID WHERE xpath = sTranslatorCodeTag;"
+    }
+]

@@ -1,0 +1,2973 @@
+[
+    {
+        "output_field": {
+            "Field": "Translator_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ],
+        "input_rule": {
+            "explicit_rule": "sSenderID = TRIM(#0I06);"
+        },
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_0010 = sSenderID;"
+        },
+        "presession": {
+            "declaration": "string[25] sSenderID;",
+            "initialization": "sSenderID=\"\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_0010 = \"CT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Document_Type_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0092",
+                "Segment": "BEG",
+                "Group": "850"
+            }
+        ],
+        "output_rule": {
+            "explicit_rule": "if #Document_Type_0010=\"NE\"|#Document_Type_0010=\"SA\"then\n#Document_Type_0010=\"STAND\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Translator_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#TP_Translator_Code_0010=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "linked_to": [
+            {
+                "Field": "0324",
+                "Segment": "BEG",
+                "Group": "850"
+            }
+        ],
+        "input_rule": {
+            "explicit_rule": "PONUM = #0324;"
+        },
+        "output_rule": {
+            "explicit_rule": "#Key_1_0010 = PONUM;"
+        },
+        "presession": {
+            "declaration": "string[22] PONUM;",
+            "initialization": "PONUM=\"\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_0010=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CTL\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_0010 = \"CTL\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Transaction_Method_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"E\"",
+        "output_rule": {
+            "explicit_rule": "#Transaction_Method_0010 = \"E\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Document_ID_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"POI\"",
+        "output_rule": {
+            "explicit_rule": "#Document_ID_0010 = \"POI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Document_Purpose_Code_001",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0353",
+                "Segment": "BEG",
+                "Group": "850"
+            }
+        ],
+        "output_rule": {
+            "explicit_rule": "if #Document_Purpose_Code_001=\"00\" then\n#Document_Purpose_Code_001=\"OR\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Document_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Document_Code_0010 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1000=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1000=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"PO\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1000 = \"PO\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"POI\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1000 = \"POI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "OPERATION_CODE_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0353",
+                "Segment": "BEG",
+                "Group": "850"
+            }
+        ],
+        "output_rule": {
+            "explicit_rule": "if #OPERATION_CODE_1000=\"00\" then\n#OPERATION_CODE_1000=\"INSERT\";\nelse if #OPERATION_CODE_1000=\"04\" then\n#OPERATION_CODE_1000=\"CHANGE\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CUSTOMER_PO_NUMBER_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#CUSTOMER_PO_NUMBER_1000=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ORDERED_DATE_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0373",
+                "Segment": "BEG",
+                "Group": "850"
+            }
+        ],
+        "presession": {
+            "declaration": "string[22] sPODate;",
+            "initialization": "sPODate=\"\";"
+        },
+        "input_rule": {
+            "explicit_rule": "STRDATE(#0373,\"%Y%m%d\",sPODate);"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ORDER_CATEGORY_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"ORDER\"",
+        "output_rule": {
+            "explicit_rule": "#ORDER_CATEGORY_1000 = \"ORDER\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ORIG_SYS_DOCUMENT_REF_1000",
+            "PosRecord": "REC_1000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "presession": {
+            "declaration": "string[1000] sOrigDocRef;",
+            "initialization": "sOrigDocRef=\"\";"
+        },
+        "output_rule": {
+            "explicit_rule": "#ORIG_SYS_DOCUMENT_REF_1000 = PARTNER_ACCOUNT + \"_\" + PONUM + \"_\" + sEDILocationCode + \"_\" + sPODate;\nsOrigDocRef = #ORIG_SYS_DOCUMENT_REF_1000;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1060 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1060 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"PY\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1060 = \"PY\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CUR\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1060 = \"CUR\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TRANSACTIONAL_CURR_CODE_1",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"USD\"",
+        "output_rule": {
+            "explicit_rule": "#TRANSACTIONAL_CURR_CODE_1 = \"USD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1070",
+            "PosRecord": "REC_1070",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1070",
+            "PosRecord": "REC_1070",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1070 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1070",
+            "PosRecord": "REC_1070",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1070 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1070",
+            "PosRecord": "REC_1070",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"PY\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1070 = \"PY\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1070",
+            "PosRecord": "REC_1070",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TAX\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1070 = \"TAX\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1090 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1090 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"FB\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1090 = \"FB\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SHP\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1090 = \"SHP\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1100=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1100=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"NT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1100=\"NT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SHP\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1100=\"SHP\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1101=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1101=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"NT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1101=\"NT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SHP\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1101=\"SHP\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1110=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1110=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"MS\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1110=\"MS\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"MIS\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1110=\"MIS\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1200=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1200=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1200=\"A1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"HD1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1200=\"HD1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CONTEXT_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"EDI\"",
+        "output_rule": {
+            "explicit_rule": "#CONTEXT_1200=\"EDI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE1_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1210=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1210=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1210=\"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"HD2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1210=\"HD2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1220=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1220=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1220=\"A1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"HD1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1220=\"HD1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE11_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N1_ST_ADDRESS",
+            "Segment": "TEMP_N1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1230 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1230 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1230 = \"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"HD4\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1230 = \"HD4\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE15_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"N\"",
+        "output_rule": {
+            "explicit_rule": "#ATTRIBUTE15_1230 = \"N\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE16_1230",
+            "PosRecord": "REC_1230",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"JDA\"",
+        "output_rule": {
+            "explicit_rule": "#ATTRIBUTE16_1230 = \"JDA\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1400=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1400=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1400 = \"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SLD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1400 = \"SLD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_Translator_Code",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "1420_KEY",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#1420_KEY=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_FILLER",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#1420_FILLER=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_Record_Layout",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CN\"",
+        "output_rule": {
+            "explicit_rule": "#1420_Record_Layout = \"CN\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_Record_Qualifier",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SLD\"",
+        "output_rule": {
+            "explicit_rule": "#1420_Record_Qualifier = \"SLD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1500",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1500",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1500=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1500",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1500=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1500",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1500=\"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1500",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"ST1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1500=\"ST1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1520",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1520",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1520=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1520",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1520=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1520",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1520=\"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1520",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"BT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1520=\"BT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "BILL_TO_EDI_Location_Code",
+            "PosRecord": "REC_1520",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "sSenderID+\"_0001\"",
+        "output_rule": {
+            "explicit_rule": "#BILL_TO_EDI_Location_Code=sSenderID+\"_0001\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1600",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1600",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1600=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1600",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1600=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1600",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1600=\"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1600",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SFM\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1600=\"SFM\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_16410",
+            "PosRecord": "REC_1610",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1610",
+            "PosRecord": "REC_1610",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1610=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1610",
+            "PosRecord": "REC_1610",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1610=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CUSTOMER_PO_NO_1610",
+            "PosRecord": "REC_1610",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#CUSTOMER_PO_NO_1610=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1640=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1640=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TP\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1640=\"TP\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"ATT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1640=\"ATT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_CONTEXT_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"EDI\"",
+        "output_rule": {
+            "explicit_rule": "#TP_CONTEXT_1640=\"EDI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_4_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#TP_Attribute_4_1640=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1650=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1650=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TP\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1650=\"TP\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AT2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1650=\"AT2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1740",
+            "PosRecord": "REC_1740",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1740",
+            "PosRecord": "REC_1740",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1740=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1740",
+            "PosRecord": "REC_1740",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1740=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1740",
+            "PosRecord": "REC_1740",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1740=\"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_1950=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_1950=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"PO\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_1950=\"PO\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"PO1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_1950=\"PO1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Orig_Sys_Document_Ref_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Orig_Sys_Document_Ref_1950=sOrigDocRef;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Change_Sequence_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"1\"",
+        "output_rule": {
+            "explicit_rule": "#Change_Sequence_1950=\"1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Operation_Code_1950",
+            "PosRecord": "REC_1950",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"BOOK_ORDER\"",
+        "output_rule": {
+            "explicit_rule": "#Operation_Code_1950=\"BOOK_ORDER\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_2000 = sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_2000 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_2000 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"IT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_2000 = \"IT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"ITM\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_2000 = \"ITM\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Line_Number_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"INC1\"",
+        "output_rule": {
+            "explicit_rule": "#Line_Number_2000 = \"INC1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Orig_Sys_Document_Ref_200",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Orig_Sys_Document_Ref_200 = sOrigDocRef;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Orig_Sys_Line_Ref_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Orig_Sys_Line_Ref_2000 = PONUM + \"_\" + sEDILocationCode + \"_\" + sPODate + \"_\" + #Customer_Line_Number_2000;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CUSTOMER_ITEM_ID_TYPE_200",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CUST\"",
+        "output_rule": {
+            "explicit_rule": "#CUSTOMER_ITEM_ID_TYPE_200 = \"CUST\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4000 = sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4000 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4000 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"DT\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4000 = \"DT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"QTY\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4000 = \"QTY\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Shipment_Number_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"1\"",
+        "output_rule": {
+            "explicit_rule": "#Shipment_Number_4000 = \"1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Orig_Sys_Shipment_Ref_400",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"1\"",
+        "output_rule": {
+            "explicit_rule": "#Orig_Sys_Shipment_Ref_400 = \"1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Request_Date_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "presession":{
+            "declaration":"datetime dREQUEST_DATE;",
+            "initialization":"dREQUEST_DATE='';"
+        },
+        "output_rule": {
+            "explicit_rule": "#Request_Date_4000 = dREQUEST_DATE;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Operation_Code_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"INSERT\"",
+        "output_rule": {
+            "explicit_rule": "#Operation_Code_4000 = \"INSERT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4200 = sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4200 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4200 = sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4200 = \"A1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"IT1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4200 = \"IT1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CONTEXT_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"EDI\"",
+        "output_rule": {
+            "explicit_rule": "#CONTEXT_4200 = \"EDI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Attribute_1_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": [
+            {
+                "Field": "0212",
+                "Segment": "PO1",
+                "Group": "850"
+            }
+        ],
+        "output_rule": {
+            "explicit_rule": "#Attribute_1_4200 = #Attribute_1_4200;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4210",
+            "PosRecord": "REC_4210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4210=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4210",
+            "PosRecord": "REC_4210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4210=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4210",
+            "PosRecord": "REC_4210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4210=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4210",
+            "PosRecord": "REC_4210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4210=\"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4800",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4800=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4800",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4800=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4800",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4800=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4800",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"AD\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4800=\"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Ship_To_EDI_Location_Code:2",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Ship_To_EDI_Location_Code:2=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4830=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4830=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4830=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4830=\"A1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TP1\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4830=\"TP1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_CONTEXT_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"EDI\"",
+        "output_rule": {
+            "explicit_rule": "#TP_CONTEXT_4830=\"EDI\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4840=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4840=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4840=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4840=\"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TP2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4840=\"TP2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_6_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#TP_Attribute_6_4840=sSysDateString;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4850",
+            "PosRecord": "REC_4850",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4850=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4850",
+            "PosRecord": "REC_4850",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4850=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4850",
+            "PosRecord": "REC_4850",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"A2\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_4850=\"A2\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4850",
+            "PosRecord": "REC_4850",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"TP3\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4850=\"TP3\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4870",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4870=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4870",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4870=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4870",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4870=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4870",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"SFR\"",
+        "output_rule": {
+            "explicit_rule": "#Record_Qualifier_4870=\"SFR\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_4880",
+            "PosRecord": "REC_4880",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_4880=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_4880",
+            "PosRecord": "REC_4880",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_4880=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_4880",
+            "PosRecord": "REC_4880",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_4880=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_9202",
+            "PosRecord": "REC_9202",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_9202=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_9202",
+            "PosRecord": "REC_9202",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_9202=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_9202",
+            "PosRecord": "REC_9202",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_9202=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_9203",
+            "PosRecord": "REC_9203",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_9203=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Key_1_9203",
+            "PosRecord": "REC_9203",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Key_1_9203=PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "filler_9203",
+            "PosRecord": "REC_9203",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#filler_9203=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Address3_9203",
+            "PosRecord": "REC_9203",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#Address3_9203=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Location_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#TP_Location_Code_0010=sEDILocationCode;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Shipping_Instructions_A_1100",
+            "PosRecord": "REC_1100",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_CO",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_2_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_DP",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_1_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_IA",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_3_1640",
+            "PosRecord": "REC_1640",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_MR",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE4_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_ST",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_8_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_REF_VR",
+            "Segment": "TEMP_REF",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_9_1650",
+            "PosRecord": "REC_1650",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_ITD_TERMS",
+            "Segment": "TEMP_ITD",
+            "Group": "850"
+        }
+    },    
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE13_1220",
+            "PosRecord": "REC_1220",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PER_CONTACT",
+            "Segment": "TEMP_PER",
+            "Group": "850"
+        }
+    },
+
+    {
+        "output_field": {
+            "Field": "FREIGHT_TERMS_1090",
+            "PosRecord": "REC_1090",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_FOB_FT",
+            "Segment": "TEMP_FOB",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE8_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_HSAC_ALLOWANCE",
+            "Segment": "TEMP_HSAC",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE5_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_FOB_FT",
+            "Segment": "TEMP_FOB",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE6_1210",
+            "PosRecord": "REC_1210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_ITD_TERMS",
+            "Segment": "TEMP_ITD",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "REQUEST_DATE_1110",
+            "PosRecord": "REC_1110",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_DTM_RDD",
+            "Segment": "TEMP_DTM",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE2_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_DTM_RCD",
+            "Segment": "TEMP_DTM",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "ATTRIBUTE1_1200",
+            "PosRecord": "REC_1200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_TD5_TMC",
+            "Segment": "TEMP_TD5",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Shipping_Instructions_C_1101",
+            "PosRecord": "REC_1101",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N9_MSG",
+            "Segment": "TEMP_N9",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "N104"
+        },
+        "link_type": "indirect",
+        "linked_to": {
+            "Field": "0067:3",
+            "Segment": "N1",
+            "Group": "4000_N1"
+        },
+        "input_rule": {
+            "explicit_rule": "IF #0098:6 = \"ST\" THEN\n BEGIN\n sEDILocationCode = #0067:3;\n END"
+        },
+        "presession": {
+            "declaration": "string[80] sEDILocationCode;",
+            "initialization": "sEDILocationCode=\"\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "SOLD_TO_EDI_Location_Code_1400",
+            "PosRecord": "REC_1400",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N1_BT",
+            "Segment": "TEMP_N1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule": "If #SOLD_TO_EDI_Location_Code_1400 = \"\" Then\n#SOLD_TO_EDI_Location_Code_1400=sSenderID+\"_0001\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Ship_To_EDI_Location_Code",
+            "PosRecord": "REC_1500",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N1_ST",
+            "Segment": "TEMP_N1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Address1_9203",
+            "PosRecord": "REC_9203",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N1_ST_ADDRESS",
+            "Segment": "TEMP_N1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "SHIP_FROM_INT_ORGANIZATION_ID",
+            "PosRecord": "REC_1600",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_N1_SF",
+            "Segment": "TEMP_N1",
+            "Group": "850"
+        },
+        "output_rule":{
+             "explicit_rule": "SF_CODE=#SHIP_FROM_INT_ORGANIZATION_ID;"
+        },
+        "presession": {
+            "declaration": "string[80] SF_CODE;",
+            "initialization": "SF_CODE=\"\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "SHIP_FROM_INT_ORGANIZATION_ID:1",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule":{
+             "explicit_rule": "#SHIP_FROM_INT_ORGANIZATION_ID:1=SF_CODE;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Customer_Item_Name_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_ITEM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_2_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_NIAGARAITEM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_1_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UPC",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Ordered_Quantity_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_QTY",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Customer_Line_Number_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_LINENUM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Line_Number_2000",
+            "PosRecord": "REC_2000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_LINENUM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Order_Quantity_UOM_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4800",
+            "PosRecord": "REC_4800",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule":"#Record_Qualifier_4800 = \"ST1\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_7_4840",
+            "PosRecord": "REC_4840",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule":"If #TP_Attribute_7_4840 = \"CA\" then #TP_Attribute_7_4840 = \"CS\";\nIf #TP_Attribute_7_4840 = \"EA\" then #TP_Attribute_7_4840 = \"Ea\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_4870",
+            "PosRecord": "REC_4870",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule":"#Record_Layout_4870 = \"AD\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CUSTOMER_PO_NO_4880",
+            "PosRecord": "REC_4880",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule":"#CUSTOMER_PO_NO_4880 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "CUSTOMER_PO_NO_9202",
+            "PosRecord": "REC_9202",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        },
+        "output_rule":{
+            "explicit_rule":"#CUSTOMER_PO_NO_9202 = PONUM;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Qualifier_4210",
+            "PosRecord": "REC_4210",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_UOM1",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Attribute_1_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO1_PRICE",
+            "Segment": "TEMP_PO1",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_SOLD_TO_CONTACT_FIRST_NAME",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#1420_SOLD_TO_CONTACT_FIRST_NAME=perFirstName;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "1420_SOLD_TO_CONTACT_LAST_NAME",
+            "PosRecord": "REC_1420",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#1420_SOLD_TO_CONTACT_LAST_NAME=perLastName;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_3_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO4_PACK",
+            "Segment": "TEMP_PO4",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "TP_Attribute_4_4830",
+            "PosRecord": "REC_4830",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_PO4_INNERPACK",
+            "Segment": "TEMP_PO4",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Attribute_3_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_SAC_CHARGE",
+            "Segment": "TEMP_SAC",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Attribute_4_4200",
+            "PosRecord": "REC_4200",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_SAC_ALLOWANCE",
+            "Segment": "TEMP_SAC",
+            "Group": "850"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Promise_Date_4000",
+            "PosRecord": "REC_4000",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": {
+            "Field": "TEMP_DTM7_PD",
+            "Segment": "TEMP_DTM7",
+            "Group": "850"
+        }
+    }
+]
