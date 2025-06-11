@@ -10,6 +10,7 @@ from logger import logger
 from presession import PresessionHandler
 from mxl_indexer import MXLIndexer
 
+
 INSTRUCT_USER_STR = "Rule generation failed. Please update manually."
 
 

@@ -2,7 +2,10 @@ import uuid
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette_context import context
 
+
 class TransactionIDMiddleware(BaseHTTPMiddleware):
+
+
     async def dispatch(self, request, call_next):
         transaction_id = str(uuid.uuid4()).replace("-", "")[:8]
 

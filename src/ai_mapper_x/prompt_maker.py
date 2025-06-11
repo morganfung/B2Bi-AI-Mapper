@@ -1,6 +1,7 @@
 # Prompt maker helper
 import os
 
+
 PROMPT_DIR_ONLINE = "prompts/online"
 
 
