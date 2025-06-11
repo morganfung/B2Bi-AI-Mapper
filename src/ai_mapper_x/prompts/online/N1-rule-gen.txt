@@ -1,0 +1,28 @@
+You will be given multiple blocks of code written in a special language.
+Each block is related to a two digits or two letters code.
+
+code blocks:
+if $4000_N1[i].#0098:6="ST" then
+BEGIN
+    $850.#TEMP_N1_ST=$4000_N1[i].#0067:3;
+    if exist(#0166)|exist(#0166:2) then
+        $850.#TEMP_N1_ST_ADDRESS=#0166+";"+#0166:2+";"+#0019+";"+#0156+";"+#0116+";"+#0026:2;
+END
+
+if $4000_N1[i].#0098:6="BY" then
+$850.#TEMP_N1_BT=$4000_N1[i].#0067:3;
+
+if $4000_N1[i].#0098:6="BT" then
+$850.#TEMP_N1_BT=$4000_N1[i].#0067:3;
+ 
+IF $4000_N1[i].#0098:6 = "VN"  THEN                                                                                                                                                                     
+$850.#TEMP_N104_VN = $4000_N1[i].#0067:3;
+
+IF $4000_N1.#0098:6="BS" THEN
+$850.#TEMP_CONCT = #0093:2+";"+#0166+";"+#0166:2+";"+#0019+";"+#0156+";"+#0116;
+
+if $4000_N1[i].#0098:6="OB" THEN 
+$850.#TEMP_N1BY=$4000_N1[i].#0067:3;
+
+Please generate a code snippet with all the blocks related to the following codes:
+{code_list}

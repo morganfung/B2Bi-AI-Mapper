@@ -1,0 +1,15 @@
+You have to extract a list of codes from a given segment content. The code is usually 2 digits/letters long.
+Following is the content of a given {segment_name} segment. 
+
+Content from segment:
+
+{segment_content}
+
+Please make sure the list has number of codes mentioned in the included field.
+Please generate a json list with all the codes for {code_list_field_name}. 
+Please dont add any explanation and make the output json serializable.
+Here is an example output format:
+[
+    "AB",
+    "CD"
+]

@@ -1,0 +1,21 @@
+You have to extract list of codes for each field. Each code is usually 2 digits/letters long.
+
+Following is the content of a given PO1 segment. 
+
+Segment Content:
+
+{segment_content}
+
+Please make sure the list has number of codes mentioned in the included field.
+Please only includes the fields where codes are available.
+Please dont add any explanation and make the output json serializable.
+Here is an example output format:
+[
+    {{
+        "field_name": "PO000",
+        "codes": ["AB", "CD"]
+    }}
+]
+
+Please extract codes for the following fields.
+{fields_as_csv}

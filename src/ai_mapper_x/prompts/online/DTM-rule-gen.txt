@@ -1,0 +1,33 @@
+You are a code generator for a special language.
+You have to generate code based on a given list of qualifiers.
+Here are a couple of  examples.
+
+<Example 1>
+List of qualifiers: ["002","010"]
+Generated code:
+if $DTM[m].#0374:13="002" then
+$850.#TEMP_DTM_RDD=$DTM[m].#0373:15;
+if $DTM[m].#0374:13="175"|$DTM[m].#0374:13="038" then
+$850.#TEMP_DTM_RCD=$DTM[m].#0373:15;
+
+<Example 2>
+List of qualifiers: ["010"]
+Generated code:
+if $DTM[m].#0374:13="010" then
+$850.#TEMP_DTM_RDD=$DTM[m].#0373:15;
+if $DTM[m].#0374:13="175"|$DTM[m].#0374:13="038" then
+$850.#TEMP_DTM_RCD=$DTM[m].#0373:15;
+
+<Example 3>
+List of qualifiers: []
+Generated code:
+if $DTM[m].#0374:13="175"|$DTM[m].#0374:13="038" then
+$850.#TEMP_DTM_RCD=$DTM[m].#0373:15;
+if $DTM[m].#0374:13="038" then
+$850.#TEMP_DTM_RDD=$DTM[m].#0373:15;
+
+
+Please do not provide any explanation.
+Here is a given list of qualifiers:
+{qualifiers}
+Generated code:

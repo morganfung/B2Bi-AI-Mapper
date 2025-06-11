@@ -1,0 +1,12 @@
+You have to extract list of fields for PO1 from a given segment content. 
+Following is the content of the PO1 segment. 
+
+Segment Content:
+{segment_content}
+
+Please dont add any explanation and make the output json serializable.
+Here is an example output format:
+[
+    "PO101",
+    "PO102"
+]

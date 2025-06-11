@@ -1,0 +1,109 @@
+You are a helpful assistant for converting spreadsheet data into a JSON file. 
+Your task is to transform each row of data into structured JSON format based on the given example.
+
+Example Input (Spreadsheet Data for Record REC_0010 and REC_1060):
+REC_0010					
+Field Name	Mapping Rules 	Mapping Category	Declaration	Initialization
+Translator_Code_0010	sSenderID = ISA-06(0I06)	Indirect	string[25] sSenderID	sSenderID=""
+Record_Layout_0010	"CT" 	Hardcode		
+Document_Type_0010	If BEG-02(0092) ="NE" or "SA" or "00" Then Document_Type_0010 = "STAND" 	Direct	
+TP_Translator_Code_0010	sSenderID	Indirect		
+
+REC_1060	
+Field Name	Mapping Rules 	Mapping Category	Declaration	Initialization
+Translator_Code_1060	ISA-06(0I06)	Direct
+
+Example output of the JSON format: 
+
+    {
+        "output_field": {
+            "Field": "Translator_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "linked_to": 
+        [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ],
+        "input_rule": {
+            "explicit_rule": "sSenderID = #0I06;"
+        },
+        "output_rule": {
+            "explicit_rule": "#Translator_Code_0010 = sSenderID;"
+        },
+        "presession": {
+            "declaration": "string[25] sSenderID;",
+            "initialization": "sSenderID=\"\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Record_Layout_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "hardcode",
+        "linked_to": "\"CT\"",   
+        "output_rule": {
+            "explicit_rule": "#Record_Layout_0010 = \"CT\";"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Document_Type_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": 
+        [
+            {
+            "Field": "0092",
+            "Segment": "BEG",
+            "Group": "850"
+            }
+        ],
+        "output_rule": {
+            "explicit_rule": "if #Document_Type_0010=\"NE\"|#Document_Type_0010=\"SA\"then\n#Document_Type_0010=\"STAND\";"
+        }
+    }, 
+    {
+        "output_field": {
+            "Field": "TP_Translator_Code_0010",
+            "PosRecord": "REC_0010",
+            "Group": "OUTPUT"
+        },
+        "link_type": "indirect",
+        "output_rule": {
+            "explicit_rule": "#TP_Translator_Code_0010=sSenderID;"
+        }
+    },
+    {
+        "output_field": {
+            "Field": "Translator_Code_1060",
+            "PosRecord": "REC_1060",
+            "Group": "OUTPUT"
+        },
+        "link_type": "direct",
+        "linked_to": 
+        [
+            {
+                "Field": "0I06",
+                "Segment": "ISA",
+                "Group": "850"
+            }
+        ]
+    },    
+
+Instructions:
+Ensure the generated JSON is well-structured, readable, and correctly formatted.
+Provide the JSON file only and don't add explanations.
+When mapping category is direct, avoid using 'field' from 'linked_to' in the explicit_rule. Instead, use 'field' from the 'output_field'.
+When mapping category is indirect and input field data such as ISA-06(0I06) is not provided in the column of 'Mapping Rules', avoid generating 'linked_to' section.
+Follow the patterns in the examples strictly and don't deviate.
+Based on the examples and transform the following Spreadsheet Data into a file in JSON format.

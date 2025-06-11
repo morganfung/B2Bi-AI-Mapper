@@ -1,0 +1,31 @@
+You will be given a few example configurations and their corresponding output code blocks.
+finally for a given configuration you have to generate a code snippet.
+
+1st cofiguration
+{
+  "offsets": [16, 36],
+  "qualifiers": ["IN", "SK"],
+  "field": "TEMP_PO1_ITEM"
+}
+
+output code:
+if $8000_PO1[n].#0235:16="IN" |  $8000_PO1[n].#0235:16="SK" then
+  $8000_PO1[n].#TEMP_PO1_ITEM = $8000_PO1[n].#0234:36;
+
+Here is another example.
+configuration
+{
+  "offsets": [17, 37],
+  "qualifiers": ["SK"],
+  "field": "TEMP_PO1_ITEM"
+}
+code:
+if $8000_PO1[n].#0235:17="SK" then
+  $8000_PO1[n].#TEMP_PO1_ITEM = $8000_PO1[n].#0234:37;
+
+if the qualifiers list is empty dont generate any code.
+Please generate code snippet for the following:
+
+{qualifier_config}
+
+please generate code snippet only without any explanation or any other text.

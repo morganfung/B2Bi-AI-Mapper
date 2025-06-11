@@ -1,0 +1,278 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AIMAPPER Service",
+        "description": "AIMAPPER Orchestrator.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://aimapper.1sqx96n7sll9.us-south.codeengine.appdomain.cloud"
+        }
+    ],
+    "paths": {
+        "/test": {
+            "get": {
+                "summary": "Fake Generate",
+                "operationId": "testEndpoint",
+                "parameters": [
+                    {
+                        "name": "document_id",
+                        "in": "query",
+                        "description": "Watson Discovery Document ID",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mxl_id": {
+                                            "type": "string",
+                                            "description": "The MXL ID of the generated map file."
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "mxl_id": "0d734334-73e2-49b1-b6df-ce4f92770eab"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/map/generate/{document_id}": {
+            "get": {
+                "summary": "Generate map",
+                "operationId": "generateMap",
+                "parameters": [
+                    {
+                        "name": "document_id",
+                        "in": "path",
+                        "description": "Watson Discovery Document ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "account_number",
+                        "in": "query",
+                        "description": "Partners account number",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "codelist_name",
+                        "in": "query",
+                        "description": "External code list table name",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Map generated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "mxl_url": {
+                                            "type": "string",
+                                            "description": "signed url for downloading."
+                                        },
+                                        "transaction_id": {
+                                            "type": "string",
+                                            "description": "transaction_id"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "mxl_url": "/map/download/<mxl_id>?expires=<timestamp>&signature=<hash>",
+                                    "transaction_id": "transaction_id"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, missing parameters or invalid input"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error message from the server."
+                                        },
+                                        "transaction_id": {
+                                            "type": "string",
+                                            "description": "transaction id for logging."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/map/download/{mxl_id}": {
+            "get": {
+                "summary": "Download a map document",
+                "operationId": "downloadMap",
+                "parameters": [
+                    {
+                        "name": "mxl_id",
+                        "in": "path",
+                        "required": true,
+                        "description": "mxl_id generated by the /map/generate endpoint",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expires",
+                        "in": "query",
+                        "description": "unix timestamp. it makes the download link short lived",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "signature",
+                        "in": "query",
+                        "description": "hmac hash",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Document download successful",
+                        "content": {
+                            "application/xml": {
+                                "example": "Downloadable mxl file"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Document not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error message from the server."
+                                        },
+                                        "transaction_id": {
+                                            "type": "string",
+                                            "description": "transaction id for logging."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/spec/upload": {
+            "post": {
+                "summary": "Upload a file",
+                "operationId": "uploadFile",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "File uploaded successfully",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "document_id": "WD document_id",
+                                    "status": "pending"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request, invalid file format or missing file"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Error message from the server."
+                                        },
+                                        "transaction_id": {
+                                            "type": "string",
+                                            "description": "transaction id for logging."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "basicAuth": {
+                "type": "http",
+                "scheme": "basic"
+            },
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
