@@ -1,0 +1,18 @@
+{
+    "WD": {
+        "INSTANCE_ID": "7fe8b3f3-7367-4852-a6ce-d83ecfb49739",
+        "PROJECT_ID": "eae7a89c-249f-4e1a-b583-b0a2287fead8",
+        "VERSION": "2023-03-31",
+        "COLLECTION_ID": "597c27ad-6289-b6a6-0000-01953a10b5ba",
+        "API_BASE_URL": "https://api.us-south.discovery.watson.cloud.ibm.com"
+    },
+    "WX": {
+        "PROJECT_ID": "98fd0b12-61cb-48a7-bf02-c24ddd0d15e6",
+        "API_BASE_URL": "https://us-south.ml.cloud.ibm.com"
+    },
+    "COS": {
+        "COS_ENDPOINT": "https://s3.us.cloud-object-storage.appdomain.cloud",
+        "COS_INSTANCE_CRN": "crn:v1:bluemix:public:cloud-object-storage:global:a/2bcdb66a9ca8421287bb1aebc427f875:baaa0751-65a4-4953-abae-19c7cbe78866::",
+        "BUCKET_NAME":"aimapper-a2"
+    }
+}

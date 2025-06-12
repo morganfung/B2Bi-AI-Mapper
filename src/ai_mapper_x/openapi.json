@@ -49,11 +49,20 @@
                 }
             }
         },
-        "/map/generate/{document_id}": {
+        "/map/generate/{transaction_type}/{document_id}": {
             "get": {
                 "summary": "Generate map",
                 "operationId": "generateMap",
                 "parameters": [
+                    {
+                        "name": "transaction_type",
+                        "in": "path",
+                        "description": "The transaction type number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     {
                         "name": "document_id",
                         "in": "path",
@@ -135,11 +144,20 @@
                 }
             }
         },
-        "/map/download/{mxl_id}": {
+        "/map/download/{transaction_type}/{mxl_id}": {
             "get": {
                 "summary": "Download a map document",
                 "operationId": "downloadMap",
                 "parameters": [
+                    {
+                        "name": "transaction_type",
+                        "in": "path",
+                        "description": "The transaction type number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     {
                         "name": "mxl_id",
                         "in": "path",
