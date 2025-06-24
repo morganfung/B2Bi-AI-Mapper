@@ -17,11 +17,11 @@ from monitorpro import MonitorProHandler
 from codelist import CodelistHandler
 
 
-TRANSACTION_TYPE = "850"
+TRANSACTION_TYPE = "810"
 
 
 async def generate_map_file(
-    transcation_type: str, document_id: str, partner_account_number: str = "", codelist_name: str = ""
+    transaction_type: str, document_id: str, partner_account_number: str = "", codelist_name: str = ""
 ) -> str:
     """Generate map file.
 
@@ -36,10 +36,12 @@ async def generate_map_file(
     Returns:
         str: The UUID of the generated MXL file.
     """
-    mxl_tree = load_xml(cos.get_master_mxl())
+    mxl_tree = load_xml(cos.get_master_mxl(transaction_type))
 
     element_index = MXLIndexer(mxl_tree)
     presession = PresessionHandler()
+
+    # print(mxl_tree)
 
     # create partner account variable in presession
     presession.add_to_presession(
@@ -48,9 +50,9 @@ async def generate_map_file(
             "initialization": f'PARTNER_ACCOUNT="{partner_account_number}";',
         }
     )
-    simple_rule = SimpleRule(mxl_tree, element_index, presession)
-    complex_rule = ComplexRule(mxl_tree, element_index, presession)
-    monitorpro = MonitorProHandler(element_index, presession)
+    simple_rule = SimpleRule(transaction_type, mxl_tree, element_index, presession)
+    complex_rule = ComplexRule(transaction_type, mxl_tree, element_index, presession)
+    monitorpro = MonitorProHandler(transaction_type, element_index, presession)
 
     simple_rule.add_simple_rule()
     monitorpro.inject()
@@ -75,7 +77,7 @@ async def main():
     DOCUMENT_ID = "4e960f80-08c5-465a-9af9-55bc0134c38a" # 99 cent
     ACCOUNT_NUMBER = "123"
     CODELIST_NAME = "DUMMY_SHIP_FROM"
-    mxl_id = await generate_map_file(DOCUMENT_ID, ACCOUNT_NUMBER, CODELIST_NAME)
+    mxl_id = await generate_map_file(TRANSACTION_TYPE, DOCUMENT_ID, ACCOUNT_NUMBER, CODELIST_NAME)
     logger.info(f"MXL FILE ID: {mxl_id}")
 
 

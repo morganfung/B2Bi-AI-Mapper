@@ -1,0 +1,10 @@
+[
+    {
+        "name": "BIG",
+        "type": "Segment",
+        "iterator": "i",
+        "input_rule": {
+            "explicit_rule": "if $BIG[i].#0373 != \"\" then\n$810.#TEMP_INV_TRANSACTION_DATE_2000 = $BIG[i].#0373;\n$810.#TEMP_TRANSACTION_NUMBER_2000 = $BIG[i].#0324;\n$810.#TEMP_PURCHASE_ORDER_DATE_2000 = $BIG[i].#0325;\n$810.#TEMP_PURCHASE_ORDER_NUMBER_200 = $BIG[i].#0323;"
+        }
+    }
+]

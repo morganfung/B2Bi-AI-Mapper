@@ -15,9 +15,8 @@ class LinkType(Enum):
 
 class SimpleRule:
     """Class for simple rules creation and injection."""
-
-
-    def __init__(self, mxl_tree: etree._ElementTree, element_index: MXLIndexer, presession: PresessionHandler):
+    def __init__(self, transaction_type: str, mxl_tree: etree._ElementTree, element_index: MXLIndexer, presession: PresessionHandler):
+        self.transaction_type = transaction_type
         self.mxl_tree = mxl_tree
         self.element_index = element_index
         self.presession = presession
@@ -25,6 +24,7 @@ class SimpleRule:
 
     def get_field_element(self, field_with_parent):
         field_name = field_with_parent.get("Field").strip()
+        print(field_name)
         return self.element_index.get_xml_element(field_name, "Field")
 
 
@@ -81,6 +81,9 @@ class SimpleRule:
     def inject_output_explicit_rule(self, field_map, generated_rule):
 
         if generated_rule.get("output_explicit_rule"):
+            # print(generated_rule)
+            # print("\n\n\n")
+            # print(field_map.get("output_field"))
             field = self.get_field_element(field_map.get("output_field"))
             explicit_rule = field.find("./ExplicitRule")
             if explicit_rule is None:
@@ -125,8 +128,9 @@ class SimpleRule:
 
 
     def add_simple_rule(self):
-        simple_rule_data = cos.get_simple_rule_data()
+        simple_rule_data = cos.get_simple_rule_data(self.transaction_type)
         for rule_data in simple_rule_data:
+            # What is this used for? It doesn't seem like it is referenced.
             output_field = rule_data["output_field"].get("Field") if rule_data.get("output_field")  else None
 
             generated_rule = self.get_simple_rule(rule_data)

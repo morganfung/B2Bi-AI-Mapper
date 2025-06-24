@@ -17,27 +17,39 @@ config = get_config()
 
 
 PROJECT_DIR = os.path.join(os.path.dirname(__file__), "../..")
-MASTER_MXL_PATH = os.path.join(PROJECT_DIR, "data/Map/NBL_Master_850_EDI2FF.mxl")
-TRAINING_DATA_DIR = os.path.join(PROJECT_DIR, "training-data/850_4010")
+# MASTER_MXL_PATH = os.path.join(PROJECT_DIR, "data/Map/NBL_Master_850_EDI2FF.mxl")
+# TRAINING_DATA_DIR = os.path.join(PROJECT_DIR, "training-data/850_4010")
 
 
-def get_master_mxl() -> str:
+def get_master_mxl(transaction_type: str) -> str:
     """Returns master mxl file.
 
     Returns:
         str: file path
     """
-    return os.path.join(PROJECT_DIR, MASTER_MXL_PATH)
+    # Add conditonals for expanding transaction type compatibility. Currently handling 850 and 810 EDI Docs.
+    MASTER_MXL_PATH = PROJECT_DIR
+
+    # Cannot use format string as end of file name is not consistent. Idea: truncate after NBL_Master_XXX
+    if transaction_type == "850":
+        MASTER_MXL_PATH = os.path.join(PROJECT_DIR, "data/Map/NBL_Master_850_EDI2FF.mxl")
+    elif transaction_type == "810":
+        MASTER_MXL_PATH = os.path.join(PROJECT_DIR, "data/Map/NBL_Master_810_FF2EDI.mxl")
+
+    return MASTER_MXL_PATH
 
 
-def get_complex_rule_config():
+def get_complex_rule_config(transaction_type: str):
+    TRAINING_DATA_DIR = os.path.join(PROJECT_DIR, f"training-data/{transaction_type}_4010")
     return json.load(open(f"{TRAINING_DATA_DIR}/complex_rule.json"))
 
 
-def get_simple_rule_data():
+def get_simple_rule_data(transaction_type: str):
+    TRAINING_DATA_DIR = os.path.join(PROJECT_DIR, f"training-data/{transaction_type}_4010")
     return json.load(open(f"{TRAINING_DATA_DIR}/simple_rule.json"))
 
-def get_monitorpro_data():
+def get_monitorpro_data(transaction_type: str):
+    TRAINING_DATA_DIR = os.path.join(PROJECT_DIR, f"training-data/{transaction_type}_4010")
     return json.load(open(f"{TRAINING_DATA_DIR}/monitorpro.json"))
 
 

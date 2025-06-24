@@ -13,9 +13,11 @@ class MonitorProHandler:
 
     def __init__(
         self,
+        transaction_type: str,
         element_index: MXLIndexer,
         presession: PresessionHandler,
     ):
+        self.transaction_type = transaction_type
         self.presession = presession
         self.element_index = element_index
 
@@ -25,7 +27,7 @@ class MonitorProHandler:
         Injects monitorpro rule into the XML node.
         """
         logger.info("Processing MonitorPro.")
-        for rule in cos.get_monitorpro_data():
+        for rule in cos.get_monitorpro_data(self.transaction_type):
             if rule.get("name") == "presession":
                 self.presession.add_to_presession(rule.get("rule"))
             else:

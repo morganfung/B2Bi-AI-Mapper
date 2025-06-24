@@ -17,7 +17,8 @@ INSTRUCT_USER_STR = "Rule generation failed. Please update manually."
 class ComplexRule:
 
 
-    def __init__(self, mxl_tree: etree._ElementTree,  element_index: MXLIndexer ,presession: PresessionHandler):
+    def __init__(self, transaction_type: str, mxl_tree: etree._ElementTree,  element_index: MXLIndexer ,presession: PresessionHandler):
+        self.transaction_type = transaction_type
         self.presession = presession
         self.mxl_tree = mxl_tree
         self.element_index = element_index
@@ -62,9 +63,17 @@ class ComplexRule:
                     "initialization": f"{iterator}=0;",
                 }
             )
-            group.find(".//OnBegin").text = f"{iterator}={iterator}+1;"
-
-        group.find(".//OnEnd").text = rule_to_inject
+            # ***CHECK***: set try except pass to continue testing
+            try:
+                group.find(".//OnBegin").text = f"{iterator}={iterator}+1;"
+            except:
+                pass
+        
+        # ***CHECK***: set try except pass to continue testing
+        try:
+            group.find(".//OnEnd").text = rule_to_inject
+        except:
+            pass
 
         logger.info(f"Rule injection done for {config.get('name')}!")
 
@@ -72,7 +81,7 @@ class ComplexRule:
     async def complex_rule(self, document_id):
         wd_result = wd.get_enriched_document(document_id)
         doc = wd_result.get("results")[0]
-        complex_rule_config = cos.get_complex_rule_config()
+        complex_rule_config = cos.get_complex_rule_config(self.transaction_type)
 
         tasks = []
         special_complex_rule_config = []

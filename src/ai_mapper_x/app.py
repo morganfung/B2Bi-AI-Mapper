@@ -59,15 +59,16 @@ async def test_endpoint(user=Depends(auth.get_auth_method)):
                         
 
 # Generate map file end point
-@app.get("/map/generate/{document_id}")
+@app.get("/map/generate/{transaction_type}/{document_id}")
 async def generate(
+    transaction_type: str,
     document_id: str,
     account_number: str = "",
     codelist_name: str = "",
     user=Depends(auth.get_auth_method)
 ):
     try:
-        mxl_id = await generate_map_file(document_id, account_number, codelist_name)
+        mxl_id = await generate_map_file(transaction_type, document_id, account_number, codelist_name)
         signed_url = auth.create_signed_url(mxl_id, expiry_seconds=600)
         return JSONResponse(content={"mxl_url": signed_url, "transaction_id": context.transcation_id})
     except Exception as e:
@@ -79,11 +80,11 @@ async def generate(
             ).dict()
         )
 
-
-@app.get("/map/download/{mxl_id}")
-def download_file(mxl_id: str, _=Depends(auth.verify_signed_link)):
+# was: @app.get(/map/download/{mxl_id})
+@app.get("/map/download/{transaction_type}/{mxl_id}")
+def download_file(transaction_type: str, mxl_id: str, _=Depends(auth.verify_signed_link)):
     try:
-        resp = cos.get_object(f"850/generated_mxl/{mxl_id}.mxl")
+        resp = cos.get_object(f"{transaction_type}/generated_mxl/{mxl_id}.mxl")
         return StreamingResponse(
             resp.get("Body"),
             media_type="application/xml",

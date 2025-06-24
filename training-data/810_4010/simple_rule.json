@@ -1,0 +1,536 @@
+[
+  {
+    "output_field": {
+      "Field": "0373",
+      "Segment": "BIG",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "INV_TRANSACTION_DATE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0076",
+      "Segment": "BIG",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TRANSACTION_NUMBER_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0373:2",
+      "Segment": "BIG",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "PURCHASE_ORDER_DATE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0324",
+      "Segment": "BIG",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "PURCHASE_ORDER_NUMBER_200",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0128:27",
+      "Segment": "REF_BM",
+      "Group": "810"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"BM\"",
+    "output_rule": {
+      "explicit_rule": "#0128:27 = \"BM\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0128:30",
+      "Segment": "REF_BM",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "BILL_OF_LADING_NUMBER_200",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0128:31",
+      "Segment": "REF_VN",
+      "Group": "810"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"IA\"",
+    "output_rule": {
+      "explicit_rule": "#0128:31 = \"IA\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0128:34",
+      "Segment": "REF_VN",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "HEADER_TP_ATTRIBUTE6_5150",
+        "PosRecord": "RECORD5150",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0098:11",
+      "Segment": "N1:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"ST\"",
+    "output_rule": {
+      "explicit_rule": "#0098:11 = \"ST\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0093:11",
+      "Segment": "N1:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_CUSTOMER_NAME_110",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0066:6",
+      "Segment": "N1:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"9\"",
+    "output_rule": {
+      "explicit_rule": "#0066:6 = \"9\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0067:15",
+      "Segment": "N1:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_CUSTOMER_CODE_EXT",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0166:9",
+      "Segment": "N3:5",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_ADDRESS1_1100",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0019:5",
+      "Segment": "N4:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_CITY_1100",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0156:7",
+      "Segment": "N4:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_STATE_1100",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0116:3",
+      "Segment": "N4:3",
+      "Group": "1000_N1_ST"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIP_TO_POSTAL_CODE_1100",
+        "PosRecord": "RECORD1100",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0098:13",
+      "Segment": "N1:4",
+      "Group": "1000_N1_SF"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"SF\"",
+    "output_rule": {
+      "explicit_rule": "#0098:13 = \"SF\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0093:15",
+      "Segment": "N1:4",
+      "Group": "1000_N1_SF"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "WAREHOUSE_NAME_4110",
+        "PosRecord": "RECORD4110",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0066:7",
+      "Segment": "N1:4",
+      "Group": "1000_N1_SF"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"9\"",
+    "output_rule": {
+      "explicit_rule": "#0066:7 = \"9\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0067:16",
+      "Segment": "N1:4",
+      "Group": "1000_N1_SF"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "HEADER_TP_ATTRIBUTE4_5140",
+        "PosRecord": "RECORD5140",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0098:15",
+      "Segment": "N1:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"RE\"",
+    "output_rule": {
+      "explicit_rule": "#0098:15 = \"RE\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0093:19",
+      "Segment": "N1:4",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "REMIT_TO_CUSTOMER_NAME_13",
+        "PosRecord": "RECORD1300",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0066:8",
+      "Segment": "N1:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"9\"",
+    "output_rule": {
+      "explicit_rule": "#0066:8 = \"9\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0067:17",
+      "Segment": "N1:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"27948264\"",
+    "output_rule": {
+      "explicit_rule": "#0067:17 = \"27948264\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0166:11",
+      "Segment": "N3:6",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "REMIT_TO_ADDRESS1_1300",
+        "PosRecord": "RECORD1300",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0019:7",
+      "Segment": "N4:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "REMIT_TO_CITY_1300",
+        "PosRecord": "RECORD1300",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0156:9",
+      "Segment": "N4:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "REMIT_TO_STATE_1300",
+        "PosRecord": "RECORD1300",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0116:5",
+      "Segment": "N4:5",
+      "Group": "1000_N1_RE"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "REMIT_TO_POSTAL_CODE_1300",
+        "PosRecord": "RECORD1300",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0336",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"01\"",
+    "output_rule": {
+      "explicit_rule": "#0336 = \"01\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0333",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"1\"",
+    "output_rule": {
+      "explicit_rule": "#0336 = \"1\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0370",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "INV_TRANSACTION_DATE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0351",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "DISCOUNT_DAYS1_2050",
+        "PosRecord": "RECORD2050",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0446",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TERM_DUE_DATE_2050",
+        "PosRecord": "RECORD2050",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0386",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TERM_DUE_DAYS_2050",
+        "PosRecord": "RECORD2050",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0362",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "HEADER_TP_ATTRIBUTE10_515",
+        "PosRecord": "RECORD5150",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0352",
+      "Segment": "ITD",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "PAYMENT_TERM_NAME_2050",
+        "PosRecord": "RECORD2050",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0374:20",
+      "Segment": "DTM_NEW",
+      "Group": "810"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"011\"",
+    "output_rule": {
+      "explicit_rule": "#0374:20 = \"011\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0373:27",
+      "Segment": "DTM_NEW",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "SHIPMENT_DATE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  }
+]
