@@ -97,6 +97,17 @@ class SimpleRule:
                 explicit_rule.text = generated_rule.get("output_explicit_rule")
 
 
+            # # Handle flag activation
+            # active_flag = field.find("./Active")
+            # if active_flag is None:
+            #     active_element = etree.Element("Active")
+            #     active_element.text = "1"
+            #     store_limit = field.find("./StoreLimit")
+            #     store_limit.addnext(active_element)
+            # else:
+            #     active_flag.text = "1"
+
+
     def inject_explicit_rule(self, field_map, generated_rule):
         if generated_rule.get("presession"):
             self.presession.add_to_presession(generated_rule.get("presession"))
