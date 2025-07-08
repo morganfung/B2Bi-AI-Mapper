@@ -73,7 +73,7 @@
   },
   {
     "output_field": {
-      "Field": "0128:30",
+      "Field": "0127:30",
       "Segment": "REF_BM",
       "Group": "810"
     },
@@ -100,7 +100,7 @@
   },
   {
     "output_field": {
-      "Field": "0128:34",
+      "Field": "0127:34",
       "Segment": "REF_VN",
       "Group": "810"
     },
@@ -117,7 +117,7 @@
     "output_field": {
       "Field": "0098:11",
       "Segment": "N1:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "hardcode",
     "linked_to": "\"ST\"",
@@ -129,7 +129,7 @@
     "output_field": {
       "Field": "0093:11",
       "Segment": "N1:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -144,7 +144,7 @@
     "output_field": {
       "Field": "0066:6",
       "Segment": "N1:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "hardcode",
     "linked_to": "\"9\"",
@@ -156,7 +156,7 @@
     "output_field": {
       "Field": "0067:15",
       "Segment": "N1:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -171,7 +171,7 @@
     "output_field": {
       "Field": "0166:9",
       "Segment": "N3:5",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -186,7 +186,7 @@
     "output_field": {
       "Field": "0019:5",
       "Segment": "N4:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -201,7 +201,7 @@
     "output_field": {
       "Field": "0156:7",
       "Segment": "N4:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -216,7 +216,7 @@
     "output_field": {
       "Field": "0116:3",
       "Segment": "N4:3",
-      "Group": "1000_N1_ST"
+      "Group": "1000_N1:2_ST"
     },
     "link_type": "direct",
     "linked_to": [
@@ -231,7 +231,7 @@
     "output_field": {
       "Field": "0098:13",
       "Segment": "N1:4",
-      "Group": "1000_N1_SF"
+      "Group": "1000_N1:3_SF"
     },
     "link_type": "hardcode",
     "linked_to": "\"SF\"",
@@ -243,7 +243,7 @@
     "output_field": {
       "Field": "0093:15",
       "Segment": "N1:4",
-      "Group": "1000_N1_SF"
+      "Group": "1000_N1:3_SF"
     },
     "link_type": "direct",
     "linked_to": [
@@ -258,7 +258,7 @@
     "output_field": {
       "Field": "0066:7",
       "Segment": "N1:4",
-      "Group": "1000_N1_SF"
+      "Group": "1000_N1:3_SF"
     },
     "link_type": "hardcode",
     "linked_to": "\"9\"",
@@ -270,7 +270,7 @@
     "output_field": {
       "Field": "0067:16",
       "Segment": "N1:4",
-      "Group": "1000_N1_SF"
+      "Group": "1000_N1:3_SF"
     },
     "link_type": "direct",
     "linked_to": [
@@ -285,7 +285,7 @@
     "output_field": {
       "Field": "0098:15",
       "Segment": "N1:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "hardcode",
     "linked_to": "\"RE\"",
@@ -297,7 +297,7 @@
     "output_field": {
       "Field": "0093:19",
       "Segment": "N1:4",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "direct",
     "linked_to": [
@@ -312,7 +312,7 @@
     "output_field": {
       "Field": "0066:8",
       "Segment": "N1:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "hardcode",
     "linked_to": "\"9\"",
@@ -324,7 +324,7 @@
     "output_field": {
       "Field": "0067:17",
       "Segment": "N1:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "hardcode",
     "linked_to": "\"27948264\"",
@@ -336,7 +336,7 @@
     "output_field": {
       "Field": "0166:11",
       "Segment": "N3:6",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "direct",
     "linked_to": [
@@ -351,7 +351,7 @@
     "output_field": {
       "Field": "0019:7",
       "Segment": "N4:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "direct",
     "linked_to": [
@@ -366,7 +366,7 @@
     "output_field": {
       "Field": "0156:9",
       "Segment": "N4:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "direct",
     "linked_to": [
@@ -381,7 +381,7 @@
     "output_field": {
       "Field": "0116:5",
       "Segment": "N4:5",
-      "Group": "1000_N1_RE"
+      "Group": "1000_N1:4_RE"
     },
     "link_type": "direct",
     "linked_to": [
@@ -394,31 +394,31 @@
   },
   {
     "output_field": {
-      "Field": "0336",
+      "Field": "0336:4",
       "Segment": "ITD",
       "Group": "810"
     },
     "link_type": "hardcode",
     "linked_to": "\"01\"",
     "output_rule": {
-      "explicit_rule": "#0336 = \"01\";"
+      "explicit_rule": "#0336:4 = \"01\";"
     }
   },
   {
     "output_field": {
-      "Field": "0333",
+      "Field": "0333:3",
       "Segment": "ITD",
       "Group": "810"
     },
     "link_type": "hardcode",
     "linked_to": "\"1\"",
     "output_rule": {
-      "explicit_rule": "#0336 = \"1\";"
+      "explicit_rule": "#0333:3 = \"1\";"
     }
   },
   {
     "output_field": {
-      "Field": "0370",
+      "Field": "0370:3",
       "Segment": "ITD",
       "Group": "810"
     },
@@ -433,7 +433,7 @@
   },
   {
     "output_field": {
-      "Field": "0351",
+      "Field": "0351:3",
       "Segment": "ITD",
       "Group": "810"
     },
@@ -448,7 +448,7 @@
   },
   {
     "output_field": {
-      "Field": "0446",
+      "Field": "0446:3",
       "Segment": "ITD",
       "Group": "810"
     },
@@ -463,7 +463,7 @@
   },
   {
     "output_field": {
-      "Field": "0386",
+      "Field": "0386:3",
       "Segment": "ITD",
       "Group": "810"
     },
@@ -478,22 +478,33 @@
   },
   {
     "output_field": {
-      "Field": "0362",
+      "Field": "HEADER_TP_ATTRIBUTE10_515",
+      "PosRecord": "RECORD5150",
+      "Group": "INPUT"
+    },
+    "link_type": "indirect",
+    "output_rule": {
+        "explicit_rule": "$INPUT.#TEMP_ITD08 = #HEADER_TP_ATTRIBUTE10_515;"
+    } 
+  },
+  {
+    "output_field": {
+      "Field": "0362:3",
       "Segment": "ITD",
       "Group": "810"
     },
     "link_type": "direct",
     "linked_to": [
       {
-        "Field": "HEADER_TP_ATTRIBUTE10_515",
-        "PosRecord": "RECORD5150",
+        "Field": "TEMP_ITD08",
+        "PosRecord": "TEMP_ITD",
         "Group": "INPUT"
       }
     ]
   },
   {
     "output_field": {
-      "Field": "0352",
+      "Field": "0352:29",
       "Segment": "ITD",
       "Group": "810"
     },
@@ -509,7 +520,7 @@
   {
     "output_field": {
       "Field": "0374:20",
-      "Segment": "DTM_NEW",
+      "Segment": "DTM:6",
       "Group": "810"
     },
     "link_type": "hardcode",
@@ -521,7 +532,7 @@
   {
     "output_field": {
       "Field": "0373:27",
-      "Segment": "DTM_NEW",
+      "Segment": "DTM:6",
       "Group": "810"
     },
     "link_type": "direct",
@@ -529,6 +540,32 @@
       {
         "Field": "SHIPMENT_DATE_2000",
         "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "FREIGHT_TERMS_CODE_4040",
+      "PosRecord": "RECORD4040",
+      "Group": "INPUT"
+    },
+    "link_type": "indirect",
+    "output_rule": {
+        "explicit_rule": "$INPUT.#TEMP_FOB01 = #FREIGHT_TERMS_CODE_4040;"
+    } 
+  },
+  {
+    "output_field": {
+      "Field": "0146",
+      "Segment": "FOB",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TEMP_FOB01",
+        "PosRecord": "TEMP_FOB",
         "Group": "INPUT"
       }
     ]

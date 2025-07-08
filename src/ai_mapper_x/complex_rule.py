@@ -120,8 +120,8 @@ async def generate_N1_rule(doc, config):
     try:
         # codes/qualifier gen
         segment_name = config.get("name_in_spec", config.get("name"))
-        code_list_field_name = config.get("code_list_field_name")
         segment_content = wd.get_segment_content(doc, segment_name)
+        code_list_field_name = config.get("code_list_field_name")
 
         prompt = pm.make_code_list_prompt(
             segment_name, segment_content, code_list_field_name
@@ -155,11 +155,12 @@ async def generate_PO1_rule(doc, config):
     try:
         segment_name = config.get("name_in_spec", config.get("name"))
         segment_content = wd.get_segment_content(doc, segment_name)
-        prompt = pm.po1_extract_fields(segment_content)
-        result = await wx.wx_call_async(prompt)
-        logger.info(f"Extracted fields for {segment_name}: "+ result)
 
-        fields = json.loads(result)
+        prompt = pm.po1_extract_fields(segment_content)
+        wx_response = await wx.wx_call_async(prompt)
+        logger.info(f"Extracted fields for {segment_name}: "+ wx_response)
+
+        fields = json.loads(wx_response)
         fields_with_codes = [f for f in fields if int(f[2:]) >= 106 and int(f[2:]) % 2 == 0]
         logger.info("PO1 fields with qualifier:"+ str(fields_with_codes))
 
@@ -215,8 +216,8 @@ async def generate_DTM_rule(doc, config):
     """
     try:
         segment_name = config.get("name_in_spec", config.get("name"))
-        code_list_field_name = config.get("code_list_field_name")
         segment_content = wd.get_segment_content(doc, segment_name)
+        code_list_field_name = config.get("code_list_field_name")
 
         prompt = pm.make_code_list_prompt(
             segment_name, segment_content, code_list_field_name
