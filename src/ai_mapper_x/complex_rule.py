@@ -57,17 +57,32 @@ class ComplexRule:
         if config.get("presession"):
             self.presession.add_to_presession(config.get("presession"))
         if iterator:
-            self.presession.add_to_presession(
-                {
-                    "declaration": f"integer {iterator};",
-                    "initialization": f"{iterator}=0;",
-                }
-            )
+            if isinstance(iterator, list):
+                buildOnBegin = ""
+                for i in iterator:
+                    self.presession.add_to_presession(
+                    {
+                        "declaration": f"integer {i};",
+                        "initialization": f"{i}=0;",
+                    }
+                    )
+                    buildOnBegin += f"{i}={i}+1;" + "\n"
+
+            else:
+                self.presession.add_to_presession(
+                    {
+                        "declaration": f"integer {iterator};",
+                        "initialization": f"{iterator}=0;",
+                    }
+                )
+                buildOnBegin = f"{iterator}={iterator}+1;"
+                
             # ***CHECK***: set try except pass to continue testing
             try:
-                group.find(".//OnBegin").text = f"{iterator}={iterator}+1;"
+                group.find(".//OnBegin").text = buildOnBegin
             except:
                 pass
+
         
         # ***CHECK***: set try except pass to continue testing
         try:

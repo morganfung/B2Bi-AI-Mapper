@@ -484,7 +484,7 @@
     },
     "link_type": "indirect",
     "output_rule": {
-        "explicit_rule": "$INPUT.#TEMP_ITD08 = #HEADER_TP_ATTRIBUTE10_515;"
+        "explicit_rule": "NTOA(#HEADER_TP_ATTRIBUTE10_515, $INPUT.#TEMP_ITD08);"
     } 
   },
   {
@@ -569,5 +569,238 @@
         "Group": "INPUT"
       }
     ]
+  },
+  {
+    "output_field": {
+        "Field": "0358",
+        "Segment": "IT1",
+        "Group": "6000_IT1"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_QUANTITY_4000:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0355:16",
+        "Segment": "IT1",
+        "Group": "6000_IT1"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_UOM_CODE_4000:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0212",
+        "Segment": "IT1",
+        "Group": "6000_IT1"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_UNIT_SELLING_PRICE_4000:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0235",
+      "Segment": "IT1",
+      "Group": "6000_IT1"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"UP\"",
+    "output_rule": {
+      "explicit_rule": "#0235 = \"UP\";"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0234",
+        "Segment": "IT1",
+        "Group": "6000_IT1"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_LINE_TP_ATTRIBUTE1_5170:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0235:2",
+      "Segment": "IT1",
+      "Group": "6000_IT1"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"BP\"",
+    "output_rule": {
+      "explicit_rule": "#0235:2 = \"BP\";"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0234:2",
+        "Segment": "IT1",
+        "Group": "6000_IT1"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_CUSTOMER_ITEM_NUMBER_4000:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0349:7",
+      "Segment": "PID:5",
+      "Group": "6000_PID:2"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"F\"",
+    "output_rule": {
+      "explicit_rule": "#0349:7 = \"F\";"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0750:5",
+      "Segment": "PID:5",
+      "Group": "6000_PID:2"
+    },
+    "link_type": "hardcode",
+    "linked_to": "\"08\"",
+    "output_rule": {
+      "explicit_rule": "#0750:5 = \"8\";"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0352:30",
+        "Segment": "PID:5",
+        "Group": "6000_PID:2"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLI_ITEM_DESCRIPTION_4010:2",
+        "PosRecord": "TEMP_LINE_ITEM",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0248:6",
+        "Segment": "SAC:4",
+        "Group": "6200_SAC:2"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLM_MODIFIER_HANDLING_CODE",
+        "PosRecord": "TEMP_LINE_MODIFIER",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "1300:6",
+        "Segment": "SAC:4",
+        "Group": "6200_SAC:2"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLM_MODIFIER_CODE",
+        "PosRecord": "TEMP_LINE_MODIFIER",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0610:8",
+        "Segment": "SAC:4",
+        "Group": "6200_SAC:2"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLM_LINE_AMOUNT_4000:3",
+        "PosRecord": "TEMP_LINE_MODIFIER",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+        "Field": "0331:4",
+        "Segment": "SAC:4",
+        "Group": "6200_SAC:2"
+    },
+    "link_type": "direct",
+    "linked_to": {
+        "Field": "TEMPLM_MODIFIER_INDICATOR",
+        "PosRecord": "TEMP_LINE_MODIFIER",
+        "Group": "GRP_TEMP_LINE_ITEMS"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0610:3",
+      "Segment": "TDS",
+      "Group": "810"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TOTAL_AMOUNT_DUE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ]
+  },
+  {
+    "output_field": {
+      "Field": "0610:9",
+      "Segment": "SAC:5",
+      "Group": "7000_SAC:2"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "AMOUNT_FREIGHT_DUE_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ],
+    "output_rule": {
+      "explicit_rule": "IF #0610:9 > 0 THEN\n\tBEGIN\n\t\t#0248:7 = \"C\";\n\t\t#1300:7 = \"D240\";\n\t\t#0331:5  = \"06\";\n\t\t#0352:32 = \"FREIGHT\";\n\tEND\n\nIF #0610:9 < 0 THEN\n\tBEGIN\n\t\t#0248:7 = \"A\";\n\t\t#1300:7 = \"C310\";\n\t\t#0331:5  = \"02\";\n\t\t#0352:32 = \"FREIGHT\";\n\tEND\n\nIF #0610:9 = 0 THEN\n\tEmpty(#0610:9);"
+    }
+  },
+  {
+    "output_field": {
+      "Field": "0610:10",
+      "Segment": "SAC:6",
+      "Group": "7000_SAC:3"
+    },
+    "link_type": "direct",
+    "linked_to": [
+      {
+        "Field": "TRANSACTION_NUMBER_2000",
+        "PosRecord": "RECORD2000",
+        "Group": "INPUT"
+      }
+    ],
+    "presession": {
+      "declaration": ["STRING [256] sLine2HeaderModifier1;", "real rLine2HeaderModifier1;", "STRING [256] sLine2HeaderModifier2;", "real rLine2HeaderModifier2;"],
+      "initialization": ["sLine2HeaderModifier1=\"\";", "rLine2HeaderModifier1=0;", "sLine2HeaderModifier2=\"\";", "rLine2HeaderModifier2=0;"]
+    },
+    "output_rule": {
+      "explicit_rule": "IF rLine2HeaderModifier1 > 0 THEN\n\tBEGIN\n\t\t#0248:8 = \"C\";\n\t\t#1300:8 = \"CHANGE THIS CODE\";\n\t\t#0610:10 = rLine2HeaderModifier1;\n\t\t#0331:6  = \"06\";\n\t\t#0352:33 = sLine2HeaderModifier1;\n\tEND\n\nIF rLine2HeaderModifier1 < 0 THEN\n\tBEGIN #0248:8 = \"A\";\n\t\t#1300:8 = \"CHANGE THIS CODE\";\n\t\t#0610:10 = rLine2HeaderModifier1;\n\t\t#0331:6  = \"02\";\n\t\t#0352:33 = sLine2HeaderModifier1;\n\tEND\n\nIF rLine2HeaderModifier1 = 0 THEN\n\tEmpty(#0610:10);"
+    }
   }
 ]
