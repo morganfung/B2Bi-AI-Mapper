@@ -2,8 +2,28 @@
     {
         "name": "presession",
         "rule": {
-            "declaration": "STRING [256] sCustomerNameTag, sOpUnitTag, sSTCtrlNumTag, sTranslatorCodeTag, sCustomerName;\nSTRING [9] sSTCtrlNum;\n\nobject oSysDate;\nobject oSysDateFormat;\nstring[8] sSysDateString;\nstring[1024] strXPATH, strXPATH1, strXPATH2, strXPATH3, strXPATH4, strXPATH5, strXPATH6, strXPATH7;",
-            "initialization": "sCustomerNameTag=\"\";\nsOpUnitTag=\"\";\nsSTCtrlNumTag=\"\";\nsTranslatorCodeTag=\"\";\nsCustomerName=\"\";\nstrXPATH  =  \"/ProcessData/ShipTo/N102/Name\";\nstrXPATH1 =  \"/ProcessData/ShipTo/N104/Code\";\nstrXPATH2 =  \"/ProcessData/ShipTo/N201/Name2\";\nstrXPATH3 =  \"/ProcessData/ShipTo/N301/Address\";\nstrXPATH4 =  \"/ProcessData/ShipTo/N401/City\";\nstrXPATH5 =  \"/ProcessData/ShipTo/N402/State\";\nstrXPATH6 =  \"/ProcessData/ShipTo/N403/ZipCode\";\nstrXPATH7 =  \"/ProcessData/ShipTo/N404/CountryCode\";\nUPDATE CORRELATIONDATA SET VALUE = \"NBL\" WHERE NAME =\"NB_OPUNIT\";\n\nsSTCtrlNum = \"\";\n\noSysDate = new(\"java.util.Date\");\noSysDateFormat = new(\"java.text.SimpleDateFormat\",\"yyyyMMdd HHmmss\");\nsSysDateString = oSysDateFormat.format(oSysDate);\nUPDATE processdata SET xpathresult = sSysDateString WHERE xpath = \"/ProcessData/NB_TranslationDate\";"
+            "declaration": "STRING [240] sOrigSysDocRef;\nobject oSysDate;\nobject oSysDateFormat;\nstring[8] sSysDateString;",
+            "initialization": "sOrigSysDocRef=\"\";\noSysDate = new(\"java.util.Date\");\noSysDateFormat = new(\"java.text.SimpleDateFormat\",\"yyyyMMdd HHmmss\");\nsSysDateString = oSysDateFormat.format(oSysDate);\nUPDATE processdata SET xpathresult = sSysDateString WHERE xpath = \"/ProcessData/NB_TranslationDate\";\nUPDATE processdata SET xpathresult = \"NBL\" WHERE xpath = \"/ProcessData/NB_OPUNIT\";\n  UPDATE processdata SET xpathresult = \"NB_GENERIC_810_5010_EDI2EDI\" WHERE xpath = \"/ProcessData/NB_Map4STControlNumber\";\nUPDATE CORRELATIONDATA SET VALUE = \"NBL\" WHERE NAME =\"NB_OPUNIT\";"
         }
+    },
+    {
+        "name": "TP_TRANSLATOR_CODE_0020",
+        "description": "RECORD0010",
+        "explicit_rule": "STRING [100] sCustomerName;\nSELECT TEXT1 INTO sCustomerName FROM CODELIST WHERE Name = \"NB_CustomerName\" and receivercode = #TP_TRANSLATOR_CODE_0020;\nUPDATE processdata SET xpathresult = sCustomerName WHERE xpath = \"/ProcessData/NB_CustomerName\";"
+    },
+    {
+        "name": "TRANSACTION_NUMBER_2000",
+        "description": "RECORD2000",
+        "explicit_rule": "UPDATE processdata SET xpathresult= #TRANSACTION_NUMBER_2000 WHERE xpath = \"/ProcessData/NB_SEND\";\nsOrigSysDocRef = #ORIG_SYS_DOCUMENT_REF_2100;"
+    },
+    {
+        "name": "PURCHASE_ORDER_NUMBER_200",
+        "description": "RECORD2000",
+        "explicit_rule": "UPDATE processdata SET xpathresult = #PURCHASE_ORDER_NUMBER_200 WHERE xpath = \"/ProcessData/NB_PO\";                                                                                                                    "
+    },
+    {
+        "name": "0382:2",
+        "description": "8000_ISS.0382:2",
+        "explicit_rule": "STRING [50] sTotalQty;\nSTRING [100] sTotalQtyTag;\nntoa(#0382:3,sTotalQty);\nsTotalQtyTag = \"/ProcessData/NB_TotalQtyShipped_\" + sOrigSysDocRef;\nUPDATE processdata SET xpathresult = sTotalQty WHERE xpath = sTotalQtyTag;"
     }
 ]

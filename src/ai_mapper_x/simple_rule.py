@@ -93,7 +93,7 @@ class SimpleRule:
                 store_limit.addnext(explicit_element)
 
             else:
-                logger.info(f"Replacing explicit rule for output fielld: {field_map.get("output_field")}")
+                logger.info(f"Replacing explicit rule for output field: {field_map.get("output_field")}")
                 explicit_rule.text = generated_rule.get("output_explicit_rule")
 
 
@@ -109,7 +109,8 @@ class SimpleRule:
 
 
     def inject_explicit_rule(self, field_map, generated_rule):
-        if generated_rule.get("presession"):
+        presession = generated_rule.get("presession")
+        if presession:
             self.presession.add_to_presession(generated_rule.get("presession"))
 
         # NOTE: injection order matters

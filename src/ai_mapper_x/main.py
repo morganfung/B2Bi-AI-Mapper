@@ -73,7 +73,7 @@ async def generate_map_file(
 
 async def main():
     ## User Input
-    #DOCUMENT_ID = "2b2ad90a-7dec-457c-a47c-59dabcb72c57"  # "Lidl_850_v4010_Bulk.pdf"
+    # NEED TO MAKE CHANGES TO WD COLLECTION ROUTING
     DOCUMENT_ID = "4e960f80-08c5-465a-9af9-55bc0134c38a" # 99 cent
     ACCOUNT_NUMBER = "123"
     CODELIST_NAME = "DUMMY_SHIP_FROM"

@@ -60,6 +60,7 @@ cos_client = ibm_boto3.client(
     ibm_service_instance_id=config.get("COS").get("COS_INSTANCE_CRN"),
     config=Config(signature_version="oauth"),
     endpoint_url=config.get("COS").get("COS_ENDPOINT"),
+    verify=False
 )
 
 
