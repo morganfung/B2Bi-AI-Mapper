@@ -10523,7 +10523,6 @@
 <BinaryOutput>0</BinaryOutput>
 <BinaryWidth>0</BinaryWidth>
 </StoreLimit>
-<ExplicitRule>UPDATE processdata SET xpathresult= #TRANSACTION_NUMBER_2000 WHERE xpath = "/ProcessData/NB_SEND";</ExplicitRule>
 <ImplicitRuleDef>
 <UseUpdate>
 <TableName>Correlation Data</TableName>
@@ -87368,7 +87367,7 @@
 <ID>28</ID>
 <Name>8000_ISS</Name>
 <Description></Description>
-<Active>0</Active>
+<Active>1</Active>
 <ChildCount>2</ChildCount>
 <Note></Note>
 <Min>0</Min>
@@ -87381,7 +87380,7 @@
 <ID>27</ID>
 <Name>ISS</Name>
 <Description>INVOICE SHIPMENT SUMMARY</Description>
-<Active>0</Active>
+<Active>1</Active>
 <ChildCount>8</ChildCount>
 <Note></Note>
 <Min>0</Min>
@@ -87408,7 +87407,7 @@
 <ID>26</ID>
 <Name>0382:2</Name>
 <Description>NUMBER OF UNITS SHIPPED</Description>
-<Active>0</Active>
+<Active>1</Active>
 <ChildCount>0</ChildCount>
 <Note></Note>
 <Mandatory>no</Mandatory>
