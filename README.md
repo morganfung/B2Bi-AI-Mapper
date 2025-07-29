@@ -1,5 +1,5 @@
 # B2B AI Mapper
-@ Niagara Bottling Development Team
+@ Niagara Bottling IT Development Team
 
 
 Process (for complex rules):
