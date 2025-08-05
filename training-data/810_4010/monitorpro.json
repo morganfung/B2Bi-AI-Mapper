@@ -24,6 +24,6 @@
     {
         "name": "0382:2",
         "description": "8000_ISS.0382:2",
-        "explicit_rule": "STRING [50] sTotalQty;\nSTRING [100] sTotalQtyTag;\nntoa(#0382:3,sTotalQty);\nsTotalQtyTag = \"/ProcessData/NB_TotalQtyShipped_\" + sOrigSysDocRef;\nUPDATE processdata SET xpathresult = sTotalQty WHERE xpath = sTotalQtyTag;"
+        "explicit_rule": "STRING [50] sTotalQty;\nSTRING [100] sTotalQtyTag;\nntoa(#0382:2,sTotalQty);\nsTotalQtyTag = \"/ProcessData/NB_TotalQtyShipped_\" + sOrigSysDocRef;\nUPDATE processdata SET xpathresult = sTotalQty WHERE xpath = sTotalQtyTag;"
     }
 ]
